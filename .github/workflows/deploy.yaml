@@ -22,7 +22,7 @@ jobs:
         #4. 확인
       - run: ls -l dist
 
-        #EC2로 보내기
+        #5. EC2로 보내기
       - uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -30,5 +30,11 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           source: dist/*
           target: /var/www/html
-          strip_components: 1
-          
+          strip_components: 1  
+
+
+
+#strip_components: 1 를 안하면 
+# EC2 컴퓨터 안에 /var/www/html/dist/ 파일들
+#  접속 경로 
+#  http://ip/dist 불편하다
